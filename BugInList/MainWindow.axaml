@@ -17,8 +17,23 @@
       <TextBox Text="{Binding Value}" />
     </DataTemplate>
   </Window.DataTemplates>
-  <UniformGrid Columns="2">
-    <ListBox ItemsSource="{Binding Items}" />
-    <ItemsControl ItemsSource="{Binding Items}" />
-  </UniformGrid>
+  <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, *">
+    <TextBlock
+      Grid.Row="0"
+      Grid.Column="0"
+      Grid.ColumnSpan="2"
+      HorizontalAlignment="Center">
+      The bug is the follows:<LineBreak />
+      If you type something in any TextBox below, the expected behavior is modification of text.<LineBreak />
+      Actually, when 'Space' button is hit, left TextBoxes that are inside ListBox ignore this character.
+      Right TextBoxes behave as expected, adding spaces to text.</TextBlock>
+    <ListBox
+      Grid.Row="1"
+      Grid.Column="0"
+      ItemsSource="{Binding Items}" />
+    <ItemsControl
+      Grid.Row="1"
+      Grid.Column="1"
+      ItemsSource="{Binding Items}" />
+  </Grid>
 </Window>
